@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "rangav.vscode-thunder-client",
+    "vadimcn.vscode-lldb",
+    "serayuzgur.crates",
+    "tamasfe.even-better-toml",
+    "rust-lang.rust-analyzer"
+  ]
+}
