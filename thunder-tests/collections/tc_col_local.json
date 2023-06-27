@@ -23,6 +23,20 @@
                 "form": []
             },
             "tests": []
+        },
+        {
+            "_id": "0e3d2632-de02-4910-8063-3e4370739988",
+            "colId": "a9ce3e30-daf8-4fff-91f6-391109db6a19",
+            "containerId": "",
+            "name": "ping",
+            "url": "{{base_url}}",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-06-27T19:10:20.214Z",
+            "modified": "2023-06-27T19:10:27.082Z",
+            "headers": [],
+            "params": [],
+            "tests": []
         }
     ]
 }

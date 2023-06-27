@@ -33,7 +33,7 @@ pub enum ApiError {
 }
 
 pub async fn add_post(
-    api_client: web::Data<ApiClient>,
+    api_client: web::Data<dyn PostAdder>,
     body: web::Json<NewPost>,
 ) -> Result<web::Json<Post>, ApplicationError> {
     info!("test log");

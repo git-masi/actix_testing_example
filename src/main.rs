@@ -19,10 +19,16 @@ async fn main() -> std::io::Result<()> {
     );
 
     HttpServer::new(|| {
+        // Adding they type here is not ideal
+        let api_client: std::sync::Arc<dyn posts::PostAdder> =
+            std::sync::Arc::new(posts::ApiClient::new());
         App::new()
             .wrap(actix_web::middleware::Logger::default())
             .wrap(actix_web::middleware::Logger::new("%a %{User-Agent}i"))
-            .app_data(web::Data::new(posts::ApiClient::new()))
+            // This doesn't work
+            // .app_data(web::Data::new(posts::ApiClient::new()))
+            .app_data(web::Data::from(api_client))
+            .route("/", web::get().to(actix_web::HttpResponse::Ok))
             .route("/", web::post().to(posts::add_post))
     })
     .bind(server_config.to_address())?
