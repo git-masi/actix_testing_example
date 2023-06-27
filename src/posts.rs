@@ -98,6 +98,8 @@ impl PostAdder for ApiClient {
     async fn add(&self, body: web::Json<NewPost>) -> Result<Post, ApiError> {
         let url = format!("{}/posts", self.config.api_url.clone());
 
+        info!("Sending request to {}", url);
+
         Ok(self
             .get_client()
             .post(url)
@@ -131,11 +133,13 @@ mod add_post_integration_tests {
     use super::*;
     use actix_web::{test, web, App};
 
-    #[actix_web::test]
+    #[test_log::test(actix_web::test)]
     async fn happy_path_() {
+        // Doesn't work, can't access data in handler function for whatever reason
+        let api_client: std::sync::Arc<dyn PostAdder> = std::sync::Arc::new(ApiClient::new());
         let app = test::init_service(
             App::new()
-                .app_data(web::Data::new(ApiClient::new()))
+                .app_data(web::Data::new(api_client))
                 .route("/", web::post().to(add_post)),
         )
         .await;
@@ -160,11 +164,13 @@ mod add_post_unit_tests {
 
     #[test_log::test(actix_web::test)]
     async fn happy_path_() {
+        // Doesn't work, can't access data in handler function for whatever reason
+        let api_client: std::sync::Arc<dyn PostAdder> = std::sync::Arc::new(FakeApiClient::new());
         let app = test::init_service(
             App::new()
                 .wrap(actix_web::middleware::Logger::default())
                 .wrap(actix_web::middleware::Logger::new("%a %{User-Agent}i"))
-                .app_data(web::Data::new(FakeApiClient::new()))
+                .app_data(web::Data::new(api_client))
                 .route("/", web::post().to(add_post)),
         )
         .await;
