@@ -1,0 +1,28 @@
+{
+    "_id": "a9ce3e30-daf8-4fff-91f6-391109db6a19",
+    "colName": "local",
+    "created": "2023-06-27T16:01:07.233Z",
+    "sortNum": 10000,
+    "folders": [],
+    "requests": [
+        {
+            "_id": "7a0ce5f0-8931-4dcf-95c8-96c41f05ee1f",
+            "colId": "a9ce3e30-daf8-4fff-91f6-391109db6a19",
+            "containerId": "",
+            "name": "add post",
+            "url": "{{base_url}}",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-06-27T16:01:20.352Z",
+            "modified": "2023-06-27T16:56:51.500Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"userId\": 1,\n  \"title\": \"new post who dis?\",\n  \"body\": \"lorem ipsum blah, blah, blah\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}

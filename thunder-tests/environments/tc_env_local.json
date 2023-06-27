@@ -1,0 +1,11 @@
+{
+    "_id": "98595fd6-2402-4192-9569-9d51f2d0ef6a",
+    "name": "(Local Env)",
+    "default": false,
+    "global": true,
+    "local": true,
+    "sortNum": -1,
+    "created": "2023-06-27T16:01:34.741Z",
+    "modified": "2023-06-27T16:01:34.741Z",
+    "data": []
+}
